@@ -5,7 +5,7 @@
 ### Kalen Luciano: [GitHub](https://github.com/kalenluciano) | [Linkedin](https://www.linkedin.com/in/kalenluciano/)
 ### Maciej Parol: [GitHub](https://github.com/Codetitude) | [Linkedin](https://www.linkedin.com/in/maciej-parol-/)
 ### James Fleming: [GitHub](https://github.com/James-fleming394) | [LinkedIn](https://www.linkedin.com/in/james--fleming/)
-### David Caldwell:[GitHub](https://github.com/LeaderOfTheLost) | [Linkedin](https://www.linkedin.com/in/david-caldwell92/)
+### David Caldwell: [GitHub](https://github.com/LeaderOfTheLost) | [Linkedin](https://www.linkedin.com/in/david-caldwell92/)
 
 ### [Deployed Site]()
 
