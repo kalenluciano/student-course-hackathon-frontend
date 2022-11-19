@@ -1,4 +1,4 @@
-# Student Course Hackathon
+# Student Course Hackathon Frontend
 
 ## Date: 11/18/2022
 
