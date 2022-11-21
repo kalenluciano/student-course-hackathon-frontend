@@ -42,7 +42,7 @@ const StudentStats = () => {
 			{coursesByStudent.map((course) => (
 				<div>
 					<h3>Class: {course.name}</h3>
-					<p>Class Average: {course.grade}</p>
+					<p>Grade Level: {course.grade}</p>
 					{allGrades
 						.filter((grade) => course.id === grade.studentCourseId)
 						.map((grade) => (
