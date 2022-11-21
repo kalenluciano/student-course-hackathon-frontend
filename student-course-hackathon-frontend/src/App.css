@@ -1,3 +1,40 @@
 .App {
   text-align: center;
 }
+
+.coursecards {
+
+  display: flex;
+  flex-wrap: wrap;
+   flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  padding: 20px;
+}
+.coursecard {
+
+  /* position: relative; */
+  padding: 5px;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.coursecard h2 {
+
+  position: absolute;
+ 
+  color: white;
+  font-family: 'Schoolbell', cursive;
+  font-size: 40px;
+  
+  
+}
+
+.chalkboard {
+  width: 250px;
+  height: 200px;
+}
