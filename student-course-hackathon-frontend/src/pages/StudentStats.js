@@ -18,9 +18,9 @@ const StudentStats = () => {
 	const getAllStudentCourses = async () => {
 		const response = await axios.get(`${BASE_URL}/student-courses`);
 		const allStudentCourses = response.data;
-		const coursesByStudentId = allStudentCourses.filter((studentCourse) => {
-			student.id === studentCourse.studentId;
-		});
+		const coursesByStudentId = allStudentCourses.filter(
+			(studentCourse) => student.id === studentCourse.studentId
+		);
 		setCoursesByStudent(coursesByStudentId);
 	};
 
@@ -44,9 +44,7 @@ const StudentStats = () => {
 					<h3>Class: {course.name}</h3>
 					<p>Class Average: {course.grade}</p>
 					{allGrades
-						.filter((grade) => {
-							course.id === grade.studentCourseId;
-						})
+						.filter((grade) => course.id === grade.studentCourseId)
 						.map((grade) => (
 							<div>
 								<p>{grade.score}</p>
