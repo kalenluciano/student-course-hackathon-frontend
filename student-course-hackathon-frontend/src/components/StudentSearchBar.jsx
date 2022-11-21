@@ -19,13 +19,14 @@ const StudentSearchBar = () => {
         const student = allStudents.filter((student)=> 
             studentSearchQuery === student.name
         )
+        setStudentSearchQuery("")
         navigate(`/student-stats/${student[0].id}`)
     }
 
     return (
         <div>
             <input type="text" placeholder="Search Students" value={studentSearchQuery} onChange={handleChange} ></input>
-            <button onSubmit={handleSubmit}>Search</button>
+            <button onClick={handleSubmit}>Search</button>
         </div>
     )
 }

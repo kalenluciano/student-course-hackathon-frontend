@@ -18,7 +18,7 @@ const AddCourseForm = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await axios.post(`${BASE_URL}/courses`, formState);
+		const response = await axios.post(`${BASE_URL}/courses/new`, formState);
 		const courseId = response.data.id;
 		setFormState(initialState);
 		navigate(`/students/${courseId}`);

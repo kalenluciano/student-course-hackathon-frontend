@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { BASE_URL } from '../globals';
 
 const StudentStats = () => {
-	const [student, setStudent] = useState({});
+	const [student, setStudent] = useState(null);
 	const [coursesByStudent, setCoursesByStudent] = useState(null);
 	const [allGrades, setAllGrades] = useState(null);
 	const [courseDetailsByStudent, setCourseDetailsByStudent] = useState([]);
@@ -20,7 +20,7 @@ const StudentStats = () => {
 		const response = await axios.get(`${BASE_URL}/student-courses`);
 		const allStudentCourses = response.data;
 		const coursesByStudentId = allStudentCourses.filter(
-			(studentCourse) => student.id === studentCourse.studentId
+			(studentCourse) => student?.id === studentCourse.studentId
 		);
 		setCoursesByStudent(coursesByStudentId);
 	};
@@ -46,15 +46,18 @@ const StudentStats = () => {
 	}, [student_id]);
 
 	useEffect(() => {
+		if (student) {
+			getStudentCourseDetails();
+		}
 		getAllStudentCourses();
-		getStudentCourseDetails();
+
 		getAllGrades();
 	}, [student]);
 
 	return (
 		<div>
-			<h2>{student.name}</h2>
-			<p>{student.email}</p>
+			<h2>{student?.name}</h2>
+			<p>{student?.email}</p>
 			{courseDetailsByStudent?.map((course) => (
 				<div key={course.id}>
 					<h3>Class: {course.name}</h3>

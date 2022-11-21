@@ -23,6 +23,7 @@ const ListOfStudents = () => {
 
 	return (
 		<div>
+			<h1>{studentCourse[0]?.name}</h1>
 			{studentCourse &&
 				studentCourse[0]?.student_courses.map((student) => (
 					<StudentCard key={student.id} student={student} />
