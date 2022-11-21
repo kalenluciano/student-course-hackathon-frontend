@@ -1,0 +1,20 @@
+{
+  "name": "student-course-hackathon-frontend",
+  "version": "1.0.0",
+  "description": "## Date: 11/18/2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalenluciano/student-course-hackathon-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalenluciano/student-course-hackathon-frontend/issues"
+  },
+  "homepage": "https://github.com/kalenluciano/student-course-hackathon-frontend#readme"
+}
