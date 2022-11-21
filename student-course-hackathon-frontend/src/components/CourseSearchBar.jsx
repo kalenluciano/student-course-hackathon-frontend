@@ -10,9 +10,9 @@ const CourseSearchBar = () => {
         setCourseSearchQuery(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = axios.get(`${BASE_URL}/courses`)
+        const response = await axios.get(`${BASE_URL}/courses`)
         const allCourses = response.data
         const course = allCourses.filter((course)=> {
             courseSearchQuery === course.name

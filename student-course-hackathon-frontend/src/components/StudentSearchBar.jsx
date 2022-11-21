@@ -10,9 +10,9 @@ const StudentSearchBar = () => {
         setStudentSearchQuery(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = axios.get(`${BASE_URL}/students`)
+        const response = await axios.get(`${BASE_URL}/students`)
         const allStudents = response.data
         const student = allStudents.filter((student)=> {
             studentSearchQuery === student.name
