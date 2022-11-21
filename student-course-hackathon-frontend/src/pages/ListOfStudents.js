@@ -13,8 +13,6 @@ const ListOfStudents = () => {
 	const getStudentsByCourseId = async () => {
 		const response = await axios.get(`${BASE_URL}/student-courses/details`);
 		const courses = response.data;
-		console.log(courses);
-		console.log(course_id);
 		const course = courses.filter((course) => course.id === courseId);
 		setStudentCourse(course);
 	};
@@ -25,9 +23,10 @@ const ListOfStudents = () => {
 
 	return (
 		<div>
-			{studentCourse[0].student_courses.map((student) => (
-				<StudentCard key={student.id} student={student} />
-			))}
+			{studentCourse &&
+				studentCourse[0]?.student_courses.map((student) => (
+					<StudentCard key={student.id} student={student} />
+				))}
 		</div>
 	);
 };

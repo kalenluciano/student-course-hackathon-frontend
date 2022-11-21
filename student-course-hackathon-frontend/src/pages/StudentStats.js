@@ -5,8 +5,9 @@ import { BASE_URL } from '../globals';
 
 const StudentStats = () => {
 	const [student, setStudent] = useState({});
-	const [coursesByStudent, setCoursesByStudent] = useState([]);
-	const [allGrades, setAllGrades] = useState([]);
+	const [coursesByStudent, setCoursesByStudent] = useState(null);
+	const [allGrades, setAllGrades] = useState(null);
+	const [courseDetailsByStudent, setCourseDetailsByStudent] = useState([]);
 
 	const { student_id } = useParams();
 
@@ -24,33 +25,50 @@ const StudentStats = () => {
 		setCoursesByStudent(coursesByStudentId);
 	};
 
+	const getStudentCourseDetails = async () => {
+		const response = await axios.get(
+			`${BASE_URL}/student-courses/student-details`
+		);
+		const allStudentCourses = response.data;
+		const coursesByStudentId = allStudentCourses.filter(
+			(studentCourse) => student.id === studentCourse.id
+		);
+		setCourseDetailsByStudent(coursesByStudentId[0].enrolled_courses);
+	};
+
 	const getAllGrades = async () => {
-		const response = await axios.get(`${BASE_URL}/grades`);
+		const response = await axios.get(`${BASE_URL}/grades/students`);
 		setAllGrades(response.data);
 	};
 
 	useEffect(() => {
 		getStudentById();
-		getAllStudentCourses();
-		getAllGrades();
 	}, [student_id]);
+
+	useEffect(() => {
+		getAllStudentCourses();
+		getStudentCourseDetails();
+		getAllGrades();
+	}, [student]);
 
 	return (
 		<div>
 			<h2>{student.name}</h2>
 			<p>{student.email}</p>
-			{coursesByStudent.map((course) => (
-				<div>
+			{courseDetailsByStudent?.map((course) => (
+				<div key={course.id}>
 					<h3>Class: {course.name}</h3>
-					<p>Grade Level: {course.grade}</p>
-					{allGrades
-						.filter((grade) => course.id === grade.studentCourseId)
-						.map((grade) => (
-							<div>
-								<p>{grade.score}</p>
-								<p>{grade.letter}</p>
-							</div>
-						))}
+					{allGrades &&
+						allGrades
+							.filter(
+								(grade) => course.id === grade.studentCourseId
+							)
+							.map((grade) => (
+								<div key={grade.id}>
+									<p>Score: {grade.score}</p>
+									<p>Letter: {grade.letter}</p>
+								</div>
+							))}
 				</div>
 			))}
 		</div>

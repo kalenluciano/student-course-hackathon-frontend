@@ -11,7 +11,6 @@ const CourseCard = ({course}) => {
             </img>
              <h2>{course.name}</h2> 
              </div>
-            
         </Link>
     )
 }
