@@ -1,10 +1,10 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Course from './page/Course';
-import ListOfStudents from './page/ListOfStudents';
-import StudentStats from './page/StudentStats';
-import AddStudentForm from './page/AddStudentForm';
-import AddCourseForm from './page/AddCourseForm';
+import Course from './pages/Course';
+import ListOfStudents from './pages/ListOfStudents';
+import StudentStats from './pages/StudentStats';
+import AddStudentForm from './pages/AddStudentForm';
+import AddCourseForm from './pages/AddCourseForm';
 import Nav from './components/Nav';
 
 function App() {
