@@ -5,22 +5,27 @@ import { BASE_URL } from '../globals';
 import StudentCard from '../components/StudentCard';
 
 const ListOfStudents = () => {
-	const [studentsByCourse, setStudentsByCourse] = useState([]);
+	const [studentCourse, setStudentCourse] = useState([]);
 
 	const { course_id } = useParams();
+	const courseId = parseInt(course_id);
 
-	const getAllStudentsByCourseId = async () => {
-		const response = await axios.get(`${BASE_URL}/students/${course_id}`);
-		setStudentsByCourse(response.data);
+	const getStudentsByCourseId = async () => {
+		const response = await axios.get(`${BASE_URL}/student-courses/details`);
+		const courses = response.data;
+		console.log(courses);
+		console.log(course_id);
+		const course = courses.filter((course) => course.id === courseId);
+		setStudentCourse(course);
 	};
 
 	useEffect(() => {
-		getAllStudentsByCourseId();
+		getStudentsByCourseId();
 	}, [course_id]);
 
 	return (
 		<div>
-			{studentsByCourse.map((student) => (
+			{studentCourse[0].student_courses.map((student) => (
 				<StudentCard key={student.id} student={student} />
 			))}
 		</div>

@@ -7,7 +7,7 @@ const Course = () => {
   const [courses, setCourses] = useState([])
 
   const getAllCourses = async () => {
-    const response = await axios.get(`${BASE_URL}/api/courses`)
+    const response = await axios.get(`${BASE_URL}/courses`)
     setCourses(response.data)
   }
 
