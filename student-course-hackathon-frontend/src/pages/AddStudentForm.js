@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BASE_URL } from '../globals';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddStudentForm = () => {
 	const initialState = {
