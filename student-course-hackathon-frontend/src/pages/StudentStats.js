@@ -72,7 +72,7 @@ const StudentStats = () => {
 								});
 					});
 			});
-		const studentGPA = totalStudentScore / totalCourses;
+		const studentGPA = (totalStudentScore / totalCourses).toFixed(2);
 		setStudentGradesForCourse(studentGradesForCourse);
 		setStudentGPA(studentGPA);
 	};
@@ -87,14 +87,17 @@ const StudentStats = () => {
 		}
 		getAllStudentCourses();
 		getAllGrades();
-		getAllGradesForStudent();
 	}, [student]);
+
+	useEffect(() => {
+		getAllGradesForStudent();
+	}, [coursesByStudent, courseDetailsByStudent, allGrades]);
 
 	return (
 		<div>
 			<h2>{student?.name}</h2>
 			<p>{student?.email}</p>
-			<p>Overall GPA: {studentGPA}</p>
+			{studentGPA !== 'NaN' && <p>Overall GPA: {studentGPA}</p>}
 			{studentGradesForCourse.map((studentGradeForCourse, index) => (
 				<div key={index}>
 					<h3>{studentGradeForCourse.name}</h3>
