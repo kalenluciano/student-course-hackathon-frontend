@@ -8,6 +8,8 @@ const StudentStats = () => {
 	const [coursesByStudent, setCoursesByStudent] = useState(null);
 	const [allGrades, setAllGrades] = useState(null);
 	const [courseDetailsByStudent, setCourseDetailsByStudent] = useState([]);
+	const [studentGradesForCourse, setStudentGradesForCourse] = useState([]);
+	const [studentGPA, setStudentGPA] = useState(null);
 
 	const { student_id } = useParams();
 
@@ -41,6 +43,40 @@ const StudentStats = () => {
 		setAllGrades(response.data);
 	};
 
+	const getAllGradesForStudent = () => {
+		const studentGradesForCourse = [];
+		let totalStudentScore = 0;
+		let totalCourses = 0;
+		coursesByStudent &&
+			coursesByStudent?.map((courseStudent) => {
+				const studentGradeCourse = {};
+				courseDetailsByStudent
+					?.filter((course) => course.id === courseStudent.courseId)
+					.map((course) => {
+						studentGradeCourse.name = course.name;
+						allGrades &&
+							allGrades
+								.filter(
+									(grade) =>
+										courseStudent.id ===
+										grade.studentCourseId
+								)
+								.map((grade) => {
+									studentGradeCourse.score = grade.score;
+									studentGradeCourse.letter = grade.letter;
+									studentGradesForCourse.push(
+										studentGradeCourse
+									);
+									totalStudentScore += grade.score;
+									totalCourses += 1;
+								});
+					});
+			});
+		const studentGPA = totalStudentScore / totalCourses;
+		setStudentGradesForCourse(studentGradesForCourse);
+		setStudentGPA(studentGPA);
+	};
+
 	useEffect(() => {
 		getStudentById();
 	}, [student_id]);
@@ -51,41 +87,21 @@ const StudentStats = () => {
 		}
 		getAllStudentCourses();
 		getAllGrades();
+		getAllGradesForStudent();
 	}, [student]);
 
 	return (
 		<div>
 			<h2>{student?.name}</h2>
 			<p>{student?.email}</p>
-			{coursesByStudent &&
-				coursesByStudent?.map((courseStudent) => (
-					<div key={courseStudent.id}>
-						{courseDetailsByStudent
-							?.filter(
-								(course) => course.id === courseStudent.courseId
-							)
-							.map((course) => (
-								<div key={courseStudent.id}>
-									<h3>{course.name}</h3>
-									{allGrades &&
-										allGrades
-											.filter(
-												(grade) =>
-													courseStudent.id ===
-													grade.studentCourseId
-											)
-											.map((grade) => (
-												<div key={grade.id}>
-													<p>Score: {grade.score}</p>
-													<p>
-														Letter: {grade.letter}
-													</p>
-												</div>
-											))}
-								</div>
-							))}
-					</div>
-				))}
+			<p>Overall GPA: {studentGPA}</p>
+			{studentGradesForCourse.map((studentGradeForCourse, index) => (
+				<div key={index}>
+					<h3>{studentGradeForCourse.name}</h3>
+					<p>Score: {studentGradeForCourse.score}</p>
+					<p>Letter: {studentGradeForCourse.letter}</p>
+				</div>
+			))}
 		</div>
 	);
 };
