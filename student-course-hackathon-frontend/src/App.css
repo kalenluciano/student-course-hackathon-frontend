@@ -34,6 +34,7 @@
 button{
   background-color: rgb(68, 66, 66);
   color:#ADDFB3;
+  margin-top:1em;
 }
 .coursecards {
   display: flex;
@@ -99,6 +100,8 @@ button{
   align-items: center;
 }
 .student-card {
+  text-decoration: none;
+  color:#1e4e24;
   border: 2px solid black;
   width: 80%;
   margin: 2em;
@@ -115,16 +118,31 @@ h1 {
   margin: auto;
 }
 label {
-  margin: 2%;
+  margin: 4%;
 }
 input {
   margin:5%;
 }
-
 form {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+}
+.course-card {
+  width: 30%;
+}
+.student-name {
+  font-size: 3em;
+  margin-bottom: 0;
+  text-shadow: 3px 2px 5px #345f39;
+}
+.student-email {
+  font-size: .9em;
+  margin-top: .5em;
+}
+.student-gpa {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
