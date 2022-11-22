@@ -17,7 +17,7 @@ const CourseSearchBar = () => {
         const response = await axios.get(`${BASE_URL}/courses`)
         const allCourses = response.data
         const course = allCourses.filter((course)=> 
-            courseSearchQuery === course.name
+            courseSearchQuery.toLowerCase() === course.name.toLowerCase()
         )
         setCourseSearchQuery("")
         navigate(`/students/${course[0].id}`)
