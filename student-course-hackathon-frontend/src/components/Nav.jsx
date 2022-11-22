@@ -1,8 +1,11 @@
 import {Link} from 'react-router-dom'
 import StudentSearchBar from './StudentSearchBar'
 import CourseSearchBar from './CourseSearchBar'
+import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
+    let navigate = useNavigate();
+
     return (
         <nav className='nav'>
             <img 
@@ -15,6 +18,7 @@ const Nav = () => {
             <Link to='/'>Courses</Link>
             <Link to='/add-student'>Add Student</Link>
             <Link to='/add-course'>Add Course</Link>
+            <Link onClick={() => navigate(-1)} >Go Back</Link>
             </div>
         </nav>
     )
