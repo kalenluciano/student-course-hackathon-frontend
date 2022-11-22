@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { BASE_URL } from '../globals';
-import CourseCard from '../components/CourseCard';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { BASE_URL } from '../globals'
+import CourseCard from '../components/CourseCard'
 
 const Course = () => {
-	const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([])
 
-	const getAllCourses = async () => {
-		const response = await axios.get(`${BASE_URL}/courses`);
-		setCourses(response.data);
-	};
+  const getAllCourses = async () => {
+    const response = await axios.get(`${BASE_URL}/courses`)
+    setCourses(response.data)
+  }
 
-	useEffect(() => {
-		getAllCourses();
-	}, []);
+  useEffect(() => {
+    getAllCourses()
+  }, [])
 
-	return (
-		<div>
-			{courses.map((course) => (
-				<CourseCard key={course.id} course={course} />
-			))}
-		</div>
-	);
-};
+  return (
+    <div className="course-grid">
+      {courses.map((course) => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  )
+}
 
-export default Course;
+export default Course

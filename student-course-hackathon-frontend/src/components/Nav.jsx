@@ -12,9 +12,9 @@ const Nav = () => {
             <StudentSearchBar />
             <CourseSearchBar />
             <div className='navlinks'>
-            <Link to='/'>Courses</Link>
-            <Link to='/add-student'>Add Student</Link>
-            <Link to='/add-course'>Add Course</Link>
+            <Link className='link' to='/'>Courses</Link>
+            <Link className='link' to='/add-student'>Add Student</Link>
+            <Link className='link' to='/add-course'>Add Course</Link>
             </div>
         </nav>
     )

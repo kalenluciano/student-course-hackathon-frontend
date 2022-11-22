@@ -1,13 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .App {
   text-align: center;
   display: flex;
   background-color: #ADDFB3;
   height: 100vh
 }
-
-
  .nav {
-
   background-color: white;
   display: flex;
   height: 100vh;
@@ -15,32 +13,38 @@
   justify-content: flex-start;
   align-content: center;
   padding: 5px;
-
 } 
-
 .nav img {
-
   align-self: flex-start;
   padding: 20px 0px;
 }
-
 .navlinks {
-
   display: flex;
+  flex-direction: column;
+  padding: 3%;
 }
-
+.link{
+  padding:2%;
+  font-family: 'Roboto', Helvetica, sans-serif;
+  border: 2px solid #ADDFB3;
+  margin: 2%;
+  color: black;
+  text-decoration: none;
+}
+button{
+  background-color: rgb(68, 66, 66);
+  color:#ADDFB3;
+}
 .coursecards {
-
   display: flex;
   flex-wrap: wrap;
-   flex-direction: row; 
+  flex-direction: row; 
   justify-content: center; 
   align-items: center; 
   padding: 20px 0px;
   margin: 0px 20px;
 }
 .coursecard {
-
   /* position: relative; */
   padding: 5px;
   width: 250px;
@@ -48,28 +52,79 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
 .coursecard h2 {
-
   position: absolute;
   color: white;
   font-family: 'Schoolbell', cursive;
   font-size: 40px;
   transition: transform .2s;
-  
-  
 }
-
 .coursecard h2:hover {
-
   cursor: pointer;
   transform: scale(1.5);
-
 }
-
 .chalkboard {
   width: 250px;
   height: 200px;
 }
+.searchBar{
+  padding: 5%;
+
+}
+.course-search-bar {
+  margin-bottom: 5%;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  grid-gap:2%;
+  margin-left:2%;
+}
+.student-and-course-page {
+  text-align: center;
+  width: 100%;
+}
+.course-student-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  text-align: center;
+}
+.student-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+.student-card {
+  border: 2px solid black;
+  width: 80%;
+  margin: 2em;
+  box-shadow: 5px 5px #345f39;
+}
+h1 {
+  font-size: 3em;
+  text-shadow: 3px 2px 5px #345f39;
+}
+.add-student-page {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+}
+label {
+  margin: 2%;
+}
+input {
+  margin:5%;
+}
+
+form {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+

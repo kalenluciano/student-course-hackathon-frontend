@@ -24,7 +24,7 @@ const StudentSearchBar = () => {
     }
 
     return (
-        <div>
+        <div className='student-search-bar searchBar'>
             <input type="text" placeholder="Search Students" value={studentSearchQuery} onChange={handleChange} ></input>
             <button onClick={handleSubmit}>Search</button>
         </div>

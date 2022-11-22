@@ -24,7 +24,8 @@ const AddCourseForm = () => {
   }
 
   return (
-    <div>
+    <div className="add-student-page">
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Course Name: </label>
         <input
@@ -35,10 +36,12 @@ const AddCourseForm = () => {
           required
         />
 
+
         <button>Add Course</button>
       </form>
     </div>
   )
 }
+
 
 export default AddCourseForm

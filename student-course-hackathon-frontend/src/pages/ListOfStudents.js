@@ -1,11 +1,14 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+
 import { BASE_URL } from '../globals'
 import StudentCard from '../components/StudentCard'
 
 const ListOfStudents = () => {
+
   let navigate = useNavigate()
+
   const { course_id } = useParams()
   const courseId = parseInt(course_id)
 
@@ -86,57 +89,63 @@ const ListOfStudents = () => {
     )
     setAddStudentFormState(initialFormState)
     toggleAddStudentForm(!addStudentForm)
+
     navigate(0)
+
   }
 
   useEffect(() => {
     getStudentsByCourseId()
     getAllStudents()
-  }, [course_id])
+  }, [course_id, addStudentButton])
 
   return (
-    <div>
-      <h1>{studentCourse[0]?.name}</h1>
-      {!addStudentForm && (
-        <button onClick={addStudentButton}>Add Student</button>
-      )}
-      {addStudentForm && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="studentId">Student: </label>
-          <select
-            id="studentId"
-            name="studentId"
-            onChange={handleChange}
-            value={addStudentFormState.studentId}
-          >
-            <option defaultValue="Select a student">Select a student</option>
-            {allStudents?.map((student) => (
-              <option value={student.id} key={student.id}>
-                {student.name}
-              </option>
+    <div className="student-and-course-page">
+      <div className="course-student-list">
+        <h1>{studentCourse[0]?.name}</h1>
+        {!addStudentForm && (
+          <button onClick={addStudentButton}>Add Student</button>
+        )}
+        {addStudentForm && (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="studentId">Student: </label>
+            <select
+              id="studentId"
+              name="studentId"
+              onChange={handleChange}
+              value={addStudentFormState.studentId}
+            >
+              <option defaultValue="Select a student">Select a student</option>
+              {allStudents?.map((student) => (
+                <option value={student.id} key={student.id}>
+                  {student.name}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="score">Score: </label>
+            <select
+              id="score"
+              name="score"
+              onChange={handleChange}
+              value={addStudentFormState.score}
+            >
+              <option defaultValue="Select a score">Select a score</option>
+              {[0, 1, 2, 3, 4].map((number) => (
+                <option value={number} key={number}>
+                  {number}
+                </option>
+              ))}
+            </select>
+            <button>Add Student</button>
+          </form>
+        )}
+        <div className="student-grid">
+          {studentCourse &&
+            studentCourse[0]?.student_courses.map((student) => (
+              <StudentCard key={student.id} student={student} />
             ))}
-          </select>
-          <label htmlFor="score">Score: </label>
-          <select
-            id="score"
-            name="score"
-            onChange={handleChange}
-            value={addStudentFormState.score}
-          >
-            <option defaultValue="Select a score">Select a score</option>
-            {[0, 1, 2, 3, 4].map((number) => (
-              <option value={number} key={number}>
-                {number}
-              </option>
-            ))}
-          </select>
-          <button>Add Student</button>
-        </form>
-      )}
-      {studentCourse &&
-        studentCourse[0]?.student_courses.map((student) => (
-          <StudentCard key={student.id} student={student} />
-        ))}
+        </div>
+      </div>
     </div>
   )
 }
