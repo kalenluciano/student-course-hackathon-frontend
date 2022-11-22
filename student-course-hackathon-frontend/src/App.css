@@ -1,15 +1,43 @@
 .App {
   text-align: center;
+  display: flex;
+  background-color: #ADDFB3;
+  height: 100vh
+}
+
+
+ .nav {
+
+  background-color: white;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 5px;
+
+} 
+
+.nav img {
+
+  align-self: flex-start;
+  padding: 20px 0px;
+}
+
+.navlinks {
+
+  display: flex;
 }
 
 .coursecards {
 
   display: flex;
   flex-wrap: wrap;
-   flex-direction: column; 
+   flex-direction: row; 
   justify-content: center; 
-  align-items: center;
-  padding: 20px;
+  align-items: center; 
+  padding: 20px 0px;
+  margin: 0px 20px;
 }
 .coursecard {
 
@@ -26,12 +54,19 @@
 .coursecard h2 {
 
   position: absolute;
- 
   color: white;
   font-family: 'Schoolbell', cursive;
   font-size: 40px;
+  transition: transform .2s;
   
   
+}
+
+.coursecard h2:hover {
+
+  cursor: pointer;
+  transform: scale(1.5);
+
 }
 
 .chalkboard {

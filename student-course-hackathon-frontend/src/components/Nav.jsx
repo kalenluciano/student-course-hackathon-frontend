@@ -4,12 +4,18 @@ import CourseSearchBar from './CourseSearchBar'
 
 const Nav = () => {
     return (
-        <nav>
+        <nav className='nav'>
+            <img 
+            src= 'https://i.imgur.com/yFgnGlgm.jpg'
+            className="school-logo"
+            alt=""></img>
             <StudentSearchBar />
             <CourseSearchBar />
+            <div className='navlinks'>
             <Link to='/'>Courses</Link>
             <Link to='/add-student'>Add Student</Link>
             <Link to='/add-course'>Add Course</Link>
+            </div>
         </nav>
     )
 }
