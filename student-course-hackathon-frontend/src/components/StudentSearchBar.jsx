@@ -17,7 +17,7 @@ const StudentSearchBar = () => {
         const response = await axios.get(`${BASE_URL}/students`)
         const allStudents = response.data
         const student = allStudents.filter((student)=> 
-            studentSearchQuery === student.name
+            studentSearchQuery.toLowerCase() === student.name.toLowerCase()
         )
         setStudentSearchQuery("")
         navigate(`/student-stats/${student[0].id}`)

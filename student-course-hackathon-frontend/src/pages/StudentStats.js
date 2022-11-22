@@ -50,7 +50,6 @@ const StudentStats = () => {
 			getStudentCourseDetails();
 		}
 		getAllStudentCourses();
-
 		getAllGrades();
 	}, [student]);
 
@@ -58,22 +57,35 @@ const StudentStats = () => {
 		<div>
 			<h2>{student?.name}</h2>
 			<p>{student?.email}</p>
-			{courseDetailsByStudent?.map((course) => (
-				<div key={course.id}>
-					<h3>Class: {course.name}</h3>
-					{allGrades &&
-						allGrades
-							.filter(
-								(grade) => course.id === grade.studentCourseId
+			{coursesByStudent &&
+				coursesByStudent?.map((courseStudent) => (
+					<div key={courseStudent.id}>
+						{courseDetailsByStudent
+							?.filter(
+								(course) => course.id === courseStudent.courseId
 							)
-							.map((grade) => (
-								<div key={grade.id}>
-									<p>Score: {grade.score}</p>
-									<p>Letter: {grade.letter}</p>
+							.map((course) => (
+								<div key={courseStudent.id}>
+									<h3>{course.name}</h3>
+									{allGrades &&
+										allGrades
+											.filter(
+												(grade) =>
+													courseStudent.id ===
+													grade.studentCourseId
+											)
+											.map((grade) => (
+												<div key={grade.id}>
+													<p>Score: {grade.score}</p>
+													<p>
+														Letter: {grade.letter}
+													</p>
+												</div>
+											))}
 								</div>
 							))}
-				</div>
-			))}
+					</div>
+				))}
 		</div>
 	);
 };

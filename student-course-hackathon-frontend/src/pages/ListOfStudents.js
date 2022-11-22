@@ -90,7 +90,7 @@ const ListOfStudents = () => {
 	useEffect(() => {
 		getStudentsByCourseId();
 		getAllStudents();
-	}, [course_id]);
+	}, [course_id, addStudentButton]);
 
 	return (
 		<div>
