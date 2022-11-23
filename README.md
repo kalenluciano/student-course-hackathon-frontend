@@ -10,7 +10,7 @@
 
 ### David Caldwell: [GitHub](https://github.com/LeaderOfTheLost) | [Linkedin](https://www.linkedin.com/in/david-caldwell92/)
 
-### [Deployed Site]()
+### [Deployed Site](https://green-tree-school.herokuapp.com/)
 
 ---
 
@@ -22,25 +22,21 @@ This app allows a user to view a list of students and courses they're enrolled i
 
 ### **_Technologies_**
 
--   PostgreSQL + Sequelize
--   Express.js
--   React
--   Node.js
+-   React.js
 -   JavaScript
+-   CSS
+-   HTML
 
-**_Entity Relationship Diagram_**
-![Entity Relationship Diagram](./assets/student-course-hackathon-ERD.drawio.png)
+**_Component Hierarchy Diagram_**
+![Component Hierarchy Diagram](./assets/student-course-hackathon-component-hierarchy-diagram.png)
 
 ---
 
 ### **_Getting Started_**
 
 1. `Fork` and `clone`
-2. `cd` into the directory
-3. Run `sequelize db:create`
-4. Run `sequelize db:migrate`
-5. Run `sequelize db:seed:all`
-6. Run `npm run dev`
+2. Run `npm install`
+3. Run `npm start`
 
 A trello board used to keep track of development progress can be [viewed here](https://trello.com/b/1qiVnuLP/student-course-hackaton).
 
